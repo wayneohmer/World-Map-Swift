@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F18A573487EBF33722CEBF5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B403830735EB2493325BE4F7 /* libPods.a */; };
+		CD4CEC2B1B31D898000D244C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4CEC2A1B31D898000D244C /* AppDelegate.swift */; };
+		CD4CEC321B31D898000D244C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD4CEC311B31D898000D244C /* Images.xcassets */; };
+		CD4CEC351B31D898000D244C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4CEC331B31D898000D244C /* LaunchScreen.xib */; };
+		CD4CEC411B31D898000D244C /* World_Map_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4CEC401B31D898000D244C /* World_Map_SwiftTests.swift */; };
+		CD4CEC4B1B31D8A9000D244C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CD4CEC4A1B31D8A9000D244C /* Podfile */; };
+		CD4CEC511B31DBCF000D244C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4CEC501B31DBCF000D244C /* Main.storyboard */; };
+		CD4CEC551B31DBE6000D244C /* GeoJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4CEC521B31DBE6000D244C /* GeoJSON.swift */; };
+		CD4CEC561B31DBE6000D244C /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4CEC531B31DBE6000D244C /* InfoTableViewController.swift */; };
+		CD4CEC571B31DBE6000D244C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4CEC541B31DBE6000D244C /* MapViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD4CEC3B1B31D898000D244C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD4CEC1D1B31D898000D244C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD4CEC241B31D898000D244C;
+			remoteInfo = "World Map-Swift";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2010F56DCEA324238EC5DDB8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B403830735EB2493325BE4F7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD4CEC251B31D898000D244C /* World Map-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Map-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD4CEC291B31D898000D244C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD4CEC2A1B31D898000D244C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD4CEC311B31D898000D244C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CD4CEC341B31D898000D244C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CD4CEC3A1B31D898000D244C /* World Map-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "World Map-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD4CEC3F1B31D898000D244C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD4CEC401B31D898000D244C /* World_Map_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World_Map_SwiftTests.swift; sourceTree = "<group>"; };
+		CD4CEC4A1B31D8A9000D244C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CD4CEC4C1B31D925000D244C /* BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
+		CD4CEC501B31DBCF000D244C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CD4CEC521B31DBE6000D244C /* GeoJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoJSON.swift; sourceTree = "<group>"; };
+		CD4CEC531B31DBE6000D244C /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		CD4CEC541B31DBE6000D244C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E9263D2BFA9C959FC25A045E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD4CEC221B31D898000D244C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F18A573487EBF33722CEBF5 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD4CEC371B31D898000D244C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3703B0D5A43932670053DC0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B403830735EB2493325BE4F7 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4169492418BEC708E41E5020 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9263D2BFA9C959FC25A045E /* Pods.debug.xcconfig */,
+				2010F56DCEA324238EC5DDB8 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD4CEC1C1B31D898000D244C = {
+			isa = PBXGroup;
+			children = (
+				CD4CEC4C1B31D925000D244C /* BridgeHeader.h */,
+				CD4CEC4A1B31D8A9000D244C /* Podfile */,
+				CD4CEC271B31D898000D244C /* World Map-Swift */,
+				CD4CEC3D1B31D898000D244C /* World Map-SwiftTests */,
+				CD4CEC261B31D898000D244C /* Products */,
+				4169492418BEC708E41E5020 /* Pods */,
+				3703B0D5A43932670053DC0A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD4CEC261B31D898000D244C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD4CEC251B31D898000D244C /* World Map-Swift.app */,
+				CD4CEC3A1B31D898000D244C /* World Map-SwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD4CEC271B31D898000D244C /* World Map-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				CD4CEC521B31DBE6000D244C /* GeoJSON.swift */,
+				CD4CEC531B31DBE6000D244C /* InfoTableViewController.swift */,
+				CD4CEC541B31DBE6000D244C /* MapViewController.swift */,
+				CD4CEC2A1B31D898000D244C /* AppDelegate.swift */,
+				CD4CEC501B31DBCF000D244C /* Main.storyboard */,
+				CD4CEC311B31D898000D244C /* Images.xcassets */,
+				CD4CEC331B31D898000D244C /* LaunchScreen.xib */,
+				CD4CEC281B31D898000D244C /* Supporting Files */,
+			);
+			path = "World Map-Swift";
+			sourceTree = "<group>";
+		};
+		CD4CEC281B31D898000D244C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD4CEC291B31D898000D244C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD4CEC3D1B31D898000D244C /* World Map-SwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD4CEC401B31D898000D244C /* World_Map_SwiftTests.swift */,
+				CD4CEC3E1B31D898000D244C /* Supporting Files */,
+			);
+			path = "World Map-SwiftTests";
+			sourceTree = "<group>";
+		};
+		CD4CEC3E1B31D898000D244C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD4CEC3F1B31D898000D244C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD4CEC241B31D898000D244C /* World Map-Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD4CEC441B31D898000D244C /* Build configuration list for PBXNativeTarget "World Map-Swift" */;
+			buildPhases = (
+				DDF1F693D66CC324210A0E44 /* Check Pods Manifest.lock */,
+				CD4CEC211B31D898000D244C /* Sources */,
+				CD4CEC221B31D898000D244C /* Frameworks */,
+				CD4CEC231B31D898000D244C /* Resources */,
+				C0E34D1B1C0E9FE628966552 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "World Map-Swift";
+			productName = "World Map-Swift";
+			productReference = CD4CEC251B31D898000D244C /* World Map-Swift.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CD4CEC391B31D898000D244C /* World Map-SwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD4CEC471B31D898000D244C /* Build configuration list for PBXNativeTarget "World Map-SwiftTests" */;
+			buildPhases = (
+				CD4CEC361B31D898000D244C /* Sources */,
+				CD4CEC371B31D898000D244C /* Frameworks */,
+				CD4CEC381B31D898000D244C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD4CEC3C1B31D898000D244C /* PBXTargetDependency */,
+			);
+			name = "World Map-SwiftTests";
+			productName = "World Map-SwiftTests";
+			productReference = CD4CEC3A1B31D898000D244C /* World Map-SwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD4CEC1D1B31D898000D244C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Wayne Ohmer";
+				TargetAttributes = {
+					CD4CEC241B31D898000D244C = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					CD4CEC391B31D898000D244C = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = CD4CEC241B31D898000D244C;
+					};
+				};
+			};
+			buildConfigurationList = CD4CEC201B31D898000D244C /* Build configuration list for PBXProject "World Map-Swift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD4CEC1C1B31D898000D244C;
+			productRefGroup = CD4CEC261B31D898000D244C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD4CEC241B31D898000D244C /* World Map-Swift */,
+				CD4CEC391B31D898000D244C /* World Map-SwiftTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD4CEC231B31D898000D244C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4CEC511B31DBCF000D244C /* Main.storyboard in Resources */,
+				CD4CEC351B31D898000D244C /* LaunchScreen.xib in Resources */,
+				CD4CEC4B1B31D8A9000D244C /* Podfile in Resources */,
+				CD4CEC321B31D898000D244C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD4CEC381B31D898000D244C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C0E34D1B1C0E9FE628966552 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDF1F693D66CC324210A0E44 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD4CEC211B31D898000D244C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4CEC2B1B31D898000D244C /* AppDelegate.swift in Sources */,
+				CD4CEC551B31DBE6000D244C /* GeoJSON.swift in Sources */,
+				CD4CEC571B31DBE6000D244C /* MapViewController.swift in Sources */,
+				CD4CEC561B31DBE6000D244C /* InfoTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD4CEC361B31D898000D244C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4CEC411B31D898000D244C /* World_Map_SwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD4CEC3C1B31D898000D244C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD4CEC241B31D898000D244C /* World Map-Swift */;
+			targetProxy = CD4CEC3B1B31D898000D244C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CD4CEC331B31D898000D244C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD4CEC341B31D898000D244C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD4CEC421B31D898000D244C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wayne Ohmer (YRF8YDGGWT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wayne Ohmer (YRF8YDGGWT)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD4CEC431B31D898000D244C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wayne Ohmer (YRF8YDGGWT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wayne Ohmer (YRF8YDGGWT)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD4CEC451B31D898000D244C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9263D2BFA9C959FC25A045E /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "World Map-Swift/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1f0b948c-73ca-49f9-b96a-9ded25eb2b20";
+				SWIFT_OBJC_BRIDGING_HEADER = BridgeHeader.h;
+			};
+			name = Debug;
+		};
+		CD4CEC461B31D898000D244C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2010F56DCEA324238EC5DDB8 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "World Map-Swift/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1f0b948c-73ca-49f9-b96a-9ded25eb2b20";
+				SWIFT_OBJC_BRIDGING_HEADER = BridgeHeader.h;
+			};
+			name = Release;
+		};
+		CD4CEC481B31D898000D244C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "World Map-SwiftTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/World Map-Swift.app/World Map-Swift";
+			};
+			name = Debug;
+		};
+		CD4CEC491B31D898000D244C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "World Map-SwiftTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/World Map-Swift.app/World Map-Swift";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD4CEC201B31D898000D244C /* Build configuration list for PBXProject "World Map-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD4CEC421B31D898000D244C /* Debug */,
+				CD4CEC431B31D898000D244C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD4CEC441B31D898000D244C /* Build configuration list for PBXNativeTarget "World Map-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD4CEC451B31D898000D244C /* Debug */,
+				CD4CEC461B31D898000D244C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD4CEC471B31D898000D244C /* Build configuration list for PBXNativeTarget "World Map-SwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD4CEC481B31D898000D244C /* Debug */,
+				CD4CEC491B31D898000D244C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD4CEC1D1B31D898000D244C /* Project object */;
+}
