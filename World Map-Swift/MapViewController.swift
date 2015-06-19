@@ -24,16 +24,14 @@ class MapViewController: UIViewController  {
         self.mapView.tileSource = RMMapboxSource(mapID: "mapbox.pencil")
         self.mapView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
         self.mapView.delegate = self
-        self.mapView.zoom = 3
-
+        dispatch_async(dispatch_get_main_queue()){
+            self.mapView.centerCoordinate = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+            self.mapView.zoom = 3
+        }
         GeoJSON.GeoJSONWithUrl(self.sourceURL) {(worldGeoJSON,error) -> Void in
             if (error == nil){
                 self.worldGeoJSON = worldGeoJSON
                 self.countryDict = worldGeoJSON.buildFeatureDictionaryWithPropertyString("name")
-                dispatch_async(dispatch_get_main_queue()){
-                    self.countryField.text = "China"
-                    self.doneEditingCountryField(self.countryField)
-                }
             }else{
                 println(GeoJSONkeys.point)
             }
@@ -77,10 +75,12 @@ class MapViewController: UIViewController  {
 extension MapViewController: RMMapViewDelegate {
     func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
         let tapLocation = CLLocation(latitude:self.mapView.pixelToCoordinate(point).latitude,longitude:(self.mapView.pixelToCoordinate(point).longitude))
+        var found = false
         if let featureArray = self.countryDict[self.countryField.text] {
             for  feature in featureArray{
                 //check if tap was inside current country
                 if (feature.geometry.surroundsPoint(tapLocation)){
+                    found = true
                     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                     var infoNavController = storyBoard.instantiateViewControllerWithIdentifier("InfoNavController") as! UINavigationController
                     var infoTableViewController = infoNavController.visibleViewController as! InfoTableViewController
@@ -92,6 +92,24 @@ extension MapViewController: RMMapViewDelegate {
                 }
             }
         }
+        if !found{
+            let countryName = self.findCountryContainingTap(tapLocation)
+            if countryName != "" {
+                self.countryField.text = countryName
+                self.doneEditingCountryField(self.countryField)
+            }
+        }
+    }
+
+    func findCountryContainingTap(tapLocation:CLLocation) -> String{
+        for (key,featureArray) in self.countryDict{
+            for feature in featureArray{
+                if feature.geometry.surroundsPoint(tapLocation){
+                    return key
+                }
+            }
+        }
+        return ""
     }
 
     func mapView(mapView: RMMapView!, layerForAnnotation annotation:RMAnnotation) -> RMMapLayer {
