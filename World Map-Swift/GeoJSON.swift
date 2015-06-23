@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 
+//Not using enum here becaue these are used as dictionary keys.
 struct GeoJSONkeys {
     static let feature = "Feature"
     static let features = "features"
@@ -26,6 +27,10 @@ struct GeoJSONkeys {
     static let id = "id"
     static let bbox = "bbox"
     static let type = "type"
+    static let crs = "crs"
+    static let href = "href"
+    static let name = "name"
+    static let link = "link"
 }
 
 public class GeoJSON: NSObject {
@@ -34,8 +39,10 @@ public class GeoJSON: NSObject {
     private(set) public var featureCollection:[GeoJSONFeature] = []
     private(set) public var feature:GeoJSONFeature?
     private(set) public var geometry:GeoJSONGeometry?
+    private(set) public var crs:GeoJSONCrs?
     private(set) public var bbox:[CLLocation]?
     private(set) public var id:String?
+
     //Read-Only Computed Properties. Uses array filtering to return arrays of features of particular geometery types
     public var points:[GeoJSONFeature]{return self.featureCollection.filter({$0.geometry.type == GeoJSONkeys.point})}
     public var multipoints:[GeoJSONFeature]{return self.featureCollection.filter({$0.geometry.type == GeoJSONkeys.multiPoint})}
@@ -44,6 +51,7 @@ public class GeoJSON: NSObject {
     public var polygons:[GeoJSONFeature]{return self.featureCollection.filter({$0.geometry.type == GeoJSONkeys.polygon})}
     public var multiPolygons:[GeoJSONFeature]{return self.featureCollection.filter({$0.geometry.type == GeoJSONkeys.multiPolygon})}
     public var geometryCollections:[GeoJSONFeature]{return self.featureCollection.filter({$0.geometry.type == GeoJSONkeys.geometryCollection})}
+
     //MARK: - Convenience inits
     convenience init(filename:String){
         //accept filename with or without extension.
@@ -72,7 +80,9 @@ public class GeoJSON: NSObject {
     }
     
     convenience init(data:NSData){
+
         var error:NSError?
+
         let jsonDict:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data,options: nil, error:&error) as? NSDictionary
         if error != nil{
             self.init()
@@ -83,6 +93,7 @@ public class GeoJSON: NSObject {
     }
     
     convenience init(dictionary:NSDictionary){
+
         self.init()
         if let bbox = dictionary[GeoJSONkeys.bbox] as? [CLLocationDegrees]{
             self.bbox = extractBbox(bbox)
@@ -90,6 +101,10 @@ public class GeoJSON: NSObject {
         if let thisId = dictionary[GeoJSONkeys.id] as? String{
             self.id = thisId
         }
+        if let thisCrsDict = dictionary[GeoJSONkeys.crs] as? NSDictionary{
+            self.crs = GeoJSONCrs(dictionary:thisCrsDict)
+        }
+
         if let geoType = dictionary[GeoJSONkeys.type] as? String{
             switch geoType{
             case GeoJSONkeys.featureCollection:
@@ -102,20 +117,24 @@ public class GeoJSON: NSObject {
             case GeoJSONkeys.feature:
                 self.type = GeoJSONkeys.feature
                 self.feature = extractFeatureFromDictionary(dictionary)
-                // lets hope it's a geometry.
-            default:
+            case GeoJSONkeys.point, GeoJSONkeys.multiPoint, GeoJSONkeys.lineString, GeoJSONkeys.multiLineString, GeoJSONkeys.polygon, GeoJSONkeys.multiPolygon, GeoJSONkeys.geometryCollection:
                 self.type = GeoJSONkeys.geometry
                 self.geometry = extractGeometryFromDictionary(dictionary)
+            default:
+                println("Could not determine type from NSDictionary")
             }
         }
     }
+
     //MARK: - Utility funcs
     private func extractBbox(bbox:[CLLocationDegrees]) -> [CLLocation]{
         return [CLLocation(latitude: bbox[1], longitude: bbox[0]),CLLocation(latitude: bbox[3], longitude: bbox[2])]
     }
     
     private func extractFeatureFromDictionary(feature:NSDictionary) -> GeoJSONFeature{
+
         var returnFeature = GeoJSONFeature()
+
         if let properties = feature[GeoJSONkeys.properties] as? NSDictionary{
             // make properties dictionary
             returnFeature.properties = properties
@@ -135,6 +154,7 @@ public class GeoJSON: NSObject {
         if let featureGeometry = feature[GeoJSONkeys.geometry] as? NSDictionary{
             returnFeature.geometry = self.extractGeometryFromDictionary(featureGeometry)
         }
+
         return returnFeature
     }
     
@@ -145,7 +165,9 @@ public class GeoJSON: NSObject {
         }
 
         func singleExtractArray(coordinateArray:NSArray) -> [CLLocation]{
+
             var returnArray = [CLLocation]()
+
             for pointArray in coordinateArray as! [[CLLocationDegrees]]{
                 returnArray.append(coordinateExtract(pointArray))
             }
@@ -153,7 +175,9 @@ public class GeoJSON: NSObject {
         }
 
         func doubleExtractArray(coordinateArray:NSArray) -> [[CLLocation]]{
+
             var returnArray = [[CLLocation]]()
+
             for secondArray in coordinateArray as! [NSArray]{
                 returnArray.append(singleExtractArray(secondArray))
             }
@@ -161,13 +185,18 @@ public class GeoJSON: NSObject {
         }
 
         func tripleExtractArray(coordinateArray:NSArray) -> [[[CLLocation]]]{
+
             var returnArray = [[[CLLocation]]]()
+
             for secondArray in coordinateArray as! [NSArray]{
                 returnArray.append(doubleExtractArray(secondArray))
             }
             return returnArray
+
         }
+
         var returnGeometry = GeoJSONGeometry()
+
         if let thisType = featureGeometryDict[GeoJSONkeys.type] as? String{
             switch thisType {
             case GeoJSONkeys.point:
@@ -199,12 +228,16 @@ public class GeoJSON: NSObject {
         }else{
             println("Feature geometry had no type")
         }
+
         return returnGeometry
     }
+
     //MARK: - url "init"
     class func GeoJSONWithUrl(url:String,completionHandler:(result: GeoJSON, error: String?) -> ()){
+
         var request = NSMutableURLRequest(URL: NSURL(string:url)!)
         var session = GeoJSONNSURLSession()
+
         session.httpGet(request) { (resultData, error) -> Void in
             if error == nil{
                 completionHandler(result: GeoJSON(data:resultData!), error: error)
@@ -213,11 +246,14 @@ public class GeoJSON: NSObject {
             }
         }
     }
+
     public func buildFeatureDictionaryWithPropertyString(property:String) -> [String:[GeoJSON.GeoJSONFeature]!]{
+
         var returnDictionary:[String:[GeoJSONFeature]!] = [:]
+
         for feature in self.featureCollection{
             if let key = feature.stringProperties[property] {
-                //This is wierd. returnDictionary[key] is optional even though I say it isn't above? 
+                //This is wierd. returnDictionary[key] is optional even though I say it isn't above?
                 if var array = returnDictionary[key]{
                     array.append(feature)
                     returnDictionary[key] = array
@@ -226,18 +262,46 @@ public class GeoJSON: NSObject {
                 }
             }
         }
+
         return returnDictionary
     }
+
     //MARK: - Local classes
     public class GeoJSONFeature: NSObject{
         
         private(set) public var geometry:GeoJSONGeometry = GeoJSONGeometry()
         private(set) public var properties = NSDictionary()
-        // handle simple case of properties just being strings instead of NSDictionary
+        // handle simple case of properties being strings instead of NSDictionary
         private(set) public var stringProperties = [String:String]()
         private(set) public var bbox:[CLLocation]?
         private(set) public var id:String?
         
+    }
+
+    public class GeoJSONCrs: NSObject{
+
+        private(set) public var name:String = ""
+        private(set) public var href:String = ""
+        private(set) public var linkType:String = ""
+
+        convenience init(dictionary:NSDictionary){
+            self.init()
+            if let properties = dictionary[GeoJSONkeys.properties] as? NSDictionary{
+                if dictionary[GeoJSONkeys.type] as? String == GeoJSONkeys.name{
+                    if properties[GeoJSONkeys.name] is String{
+                        self.name = properties[GeoJSONkeys.name] as! String
+                    }
+                }
+                if dictionary[GeoJSONkeys.type] as? String == GeoJSONkeys.link{
+                    if properties[GeoJSONkeys.href] is String{
+                        self.href = properties[GeoJSONkeys.href] as! String
+                    }
+                    if properties[GeoJSONkeys.type] is String{
+                        self.linkType = properties[GeoJSONkeys.type] as! String
+                    }
+                }
+            }
+        }
     }
     
     public class GeoJSONGeometry: NSObject{
@@ -251,6 +315,7 @@ public class GeoJSON: NSObject {
         private(set) public var multiPolygon:[[[CLLocation]]] = [[[]]]
         private(set) public var geometryCollection:[GeoJSONGeometry] = []
         lazy private var bounds:[CLLocationCoordinate2D] = self.findBounds()
+
         //Read only Computed Properties
         public var boundsSouthWest:CLLocationCoordinate2D{return self.bounds[0]}
         public var boundsNorthEast:CLLocationCoordinate2D{return self.bounds[1]}
@@ -366,10 +431,13 @@ public class GeoJSON: NSObject {
         }
         //returns the bounding box of a feature geometry. Private because boundsSouthWest and boundsNorthEast return the value is a nicer form.
         private func findBounds() -> [CLLocationCoordinate2D]{
+
+            //initialize with oposite extreme
             var maxLatitute:CLLocationDegrees = -90
             var maxLongitude:CLLocationDegrees = -180
             var minLatitute:CLLocationDegrees = 90.0
             var minLongitude:CLLocationDegrees = 180.0
+
             func processLocationArray(polygon:[CLLocation]){
                 for point in polygon{
                     if point.coordinate.longitude > maxLongitude{
@@ -386,6 +454,7 @@ public class GeoJSON: NSObject {
                     }
                 }
             }
+
             switch self.type{
             case GeoJSONkeys.multiPoint:
                 processLocationArray(self.multiPoint)
@@ -406,9 +475,11 @@ public class GeoJSON: NSObject {
             default:
                 return [CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)]
             }
+
             return [CLLocationCoordinate2D(latitude: minLatitute,longitude: minLongitude),CLLocationCoordinate2D(latitude: maxLatitute,longitude: maxLongitude)]
         }
     }
+
     //MARK: - NSURLsession Class.
     class GeoJSONNSURLSession: NSObject,NSURLSessionDelegate,NSURLSessionTaskDelegate  {
         
@@ -424,10 +495,12 @@ public class GeoJSON: NSObject {
             }
             task.resume()
         }
+
         //handle https
         func URLSession(session: NSURLSession,didReceiveChallenge challenge: NSURLAuthenticationChallenge,completionHandler:(NSURLSessionAuthChallengeDisposition,NSURLCredential!) -> Void) {
             completionHandler( NSURLSessionAuthChallengeDisposition.UseCredential, NSURLCredential(forTrust:challenge.protectionSpace.serverTrust))
         }
+
         //handle http
         func URLSession(session: NSURLSession,task: NSURLSessionTask,willPerformHTTPRedirection response: NSHTTPURLResponse,newRequest request: NSURLRequest,completionHandler: (NSURLRequest!) -> Void) {
             var newRequest : NSURLRequest? = request
